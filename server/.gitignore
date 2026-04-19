@@ -218,7 +218,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 # 配置文件
-version.json
+config.json
 
 # 更新包目录
 Update_Package/
