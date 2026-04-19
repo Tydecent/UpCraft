@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# 配置文件
+version.json
+
+# 更新包目录
+Update_Package/
