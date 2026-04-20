@@ -49,7 +49,7 @@ namespace UpCraft {
             }
             ofs.clear();
 
-            auto res = cli.Get("/path/to/large-file", [&](const char *data, size_t data_length) {
+            auto res = cli.Get("/api/v1/download_package", [&](const char *data, size_t data_length) {
                 ofs.write(data, data_length); 
                 return true; 
             }); 
