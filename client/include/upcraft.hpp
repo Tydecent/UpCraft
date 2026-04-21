@@ -14,7 +14,7 @@ namespace UpCraft {
             this -> url = url;
         }
 
-        bool health() {
+        int health() {
             httplib::Client cli(url);
 
             auto res = cli.Get("/health");
