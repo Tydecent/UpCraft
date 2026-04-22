@@ -3,7 +3,7 @@
 UpCraft 的服务端。
 
 ## 简介
-这是UpCraft的子项目，负责管理软件的版本信息，并提供给客户端软件更新和版本信息。
+这是UpCraft的服务端，负责管理软件的版本信息，并提供给客户端软件更新和版本信息。
 
 ## 启动
 
@@ -31,3 +31,6 @@ pip install -r requirements.txt
 ```bash
 python server.py
 ```
+
+## API文档
+详细的API文档见[服务端API文档](../docs/server_api.md)。
