@@ -14,15 +14,21 @@ namespace UpCraft {
             this -> url = url;
         }
 
-        int health() {
+        struct health_return
+        {
+            bool success;
+            int status_code;
+        };
+        
+        health_return health() {
             httplib::Client cli(url);
 
             auto res = cli.Get("/health");
 
             if (res && res -> status == 200) {
-                return 0;
+                return {true, res -> status};
             } else {
-                return res -> status;
+                return {false, res -> status};
             }
         }
 

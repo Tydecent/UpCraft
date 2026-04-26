@@ -23,14 +23,21 @@ UpCraft(const std::string& url);
 ### 成员函数
 #### 1. `health()`
 ```cpp
-int health();
+health_return health();
 ```
 **描述：**
 向服务器发送`GET /health`请求，检查服务是否可用，
 
 **返回值**
-- `0`：服务健康，HTTP 响应状态码为 200。
-- 若非零，则为实际 HTTP 响应状态码。
+返回`health_return`结构体，定义如下：
+```cpp
+struct health_return {
+    bool    success;        // 请求是否成功且状态码为200
+    int     status_code;    // HTTP 响应状态码
+};
+```
+- 若`success`值为`true`，表示服务健康，HTTP响应状态码为200
+- 否则，表示服务不健康，HTTP响应状态码为非200。
 
 #### 2. `get_version()`
 ```cpp
