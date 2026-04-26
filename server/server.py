@@ -5,8 +5,8 @@ from flask import Flask, jsonify, send_file
 
 
 CONFIG_FILE = "config.json"
-VERSION = None
-PACKAGE_FILE = None
+LATEST_VERSION = None
+PACKAGE_FILE_SUFFIX = None
 
 def update_version_file():
     """
@@ -15,13 +15,13 @@ def update_version_file():
     该函数在单独线程运行，每隔10秒读取一次version.json文件，并更新全局变量VERSION。
     """
     global VERSION
-    global PACKAGE_FILE
+    global PACKAGE_FILE_SUFFIX
 
     while True:
         with open(CONFIG_FILE, "r") as f:
             data = json.load(f)
             VERSION = data["version"]
-            PACKAGE_FILE = data["package_file"]
+            PACKAGE_FILE_SUFFIX = data["package_file_suffix"]
         time.sleep(10)
 
 update_version_file_thread = threading.Thread(target=update_version_file)
@@ -46,7 +46,14 @@ def download_package():
     """
     global PACKAGE_FILE
 
-    return send_file(PACKAGE_FILE, as_attachment=True), 200
+    return send_file(f"./Update_Package/{LATEST_VERSION}.{PACKAGE_FILE_SUFFIX}", as_attachment=True), 200
+
+@app.route("/api/v1/get_version/<version_number>", methods=["GET"])
+def get_version_number(version_number):
+    """
+    获取指定版本号的更新包
+    """
+    return send_file(f"./Update_Package/{version_number}.{PACKAGE_FILE_SUFFIX}", as_attachment=True), 200
 
 
 if __name__ == "__main__":
