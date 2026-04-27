@@ -10,6 +10,7 @@ set(COMMON_INCLUDES
     ${CMAKE_CURRENT_SOURCE_DIR}/third_party/cpp-httplib             # httplib.h
     ${CMAKE_CURRENT_SOURCE_DIR}/third_party/json/include/nlohmann/  # nlohmann/json.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/third_party/json/include/           # fuck
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/cxxopts/include         # cxxopts.hpp
 )
 
 add_executable(UpCraftClient 
