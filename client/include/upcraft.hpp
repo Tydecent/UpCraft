@@ -47,7 +47,7 @@ namespace UpCraft {
             }
         }
 
-        int download_update() {
+        int download_update(const std::string version_number = "latest") {
             httplib::Client cli(url);
             std::ofstream ofs("update", std::ios::binary);
             if (!ofs) {
@@ -55,7 +55,9 @@ namespace UpCraft {
             }
             ofs.clear();
 
-            auto res = cli.Get("/api/v1/download_package", [&](const char *data, size_t data_length) {
+            std::string get_path = version_number == "latest" ? "/api/v1/download_package" : "/api/v1/download_package/" + version_number;
+
+            auto res = cli.Get(get_path, [&](const char *data, size_t data_length) {
                 ofs.write(data, data_length); 
                 return true; 
             }); 

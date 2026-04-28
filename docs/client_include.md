@@ -52,10 +52,13 @@ std::string get_version();
 
 #### 3. `download_update()`
 ```cpp
-int download_update();
+int download_update(const std::string version_number = "latest")
 ```
+**参数：**
+- `version_number` (可选)：指定要下载的更新包版本，如为空，则下载最新版。
+
 **描述：**
-向服务器发送`GET /update`请求，下载最新版本的客户端。
+向服务器发送`GET /api/v1/get_version/<version_number>`请求，下载最新版本的客户端。
 
 > [!NOTE]
 > 无论服务端上的文件名，客户端上保存的服务始终为`update`
