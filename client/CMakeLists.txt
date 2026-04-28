@@ -18,9 +18,9 @@ add_executable(UpCraftClient
                src/utils.cpp)
 
 
-target_include_directories(example PRIVATE ${COMMON_INCLUDES})
+target_include_directories(UpCraftClient PRIVATE ${COMMON_INCLUDES})
 
 if (WIN32)
     # Windows下cpp-httplib需要链接ws2_32.lib
-    target_link_libraries(example ws2_32)
+    target_link_libraries(UpCraftClient ws2_32)
 endif()
